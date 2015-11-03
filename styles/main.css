@@ -1,0 +1,94 @@
+/*
+* Formatting
+*/
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1; /* ie 6/7 */
+}
+
+.float-right{
+    float: right;
+}
+.row{
+    clear: left;
+}
+/*
+* calculator containers
+*/
+.calculator-container{
+    background-color: #1D1D1D;
+    width: 800px;
+    margin:auto;
+    border: 1px solid white;
+    height: 650px;
+
+}
+.input-area{
+    width: 600px;
+    height: 75px;
+    margin: auto;
+    background-color: #3F3F3F;
+    border: 1px solid #525252;
+    border-bottom: 1px solid #0EBFE9;
+    color: white;
+    text-align: right;
+    font-size: 3em;
+    line-height: 75px;
+}
+
+/*
+* Calculator Buttons
+*/
+
+.btn{
+ color: white;
+ float: left;
+ width: 100px;
+ margin: 5px;
+ height: 75px;
+ line-height: 75px;
+ text-align: center;
+ border-radius: 3px;
+ cursor: pointer;
+ -moz-user-select: -moz-none;
+ -webkit-user-select: none;
+ -ms-user-select: none;
+ -webkit-tap-highlight-color: transparent;
+}
+
+.btn-center-item{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.btn-area{
+    width: 610px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.btn-number{
+  background-color: #6f6f6f;
+}
+
+.btn-operator{
+    background-color: #3f3f3f;
+}
+
+.btn-operator-submit{
+    background-color: #3079ed ;
+}
+.selected{
+    border: 1px solid white;
+}
