@@ -7,8 +7,10 @@
 var input = '';
 var selected = false;
 var firstNumber = false;
+var firstDecmial = false;
 var operator = false;
 var secondNumber = false;
+var secondDecmial = false;
 var operatorList = ['x', '*', '+', '-', '/', '÷', '%' ];
 
 
@@ -23,10 +25,29 @@ $('.btn-number').click(function(){
     }
 });
 
+$('.btn-number-decmial').click(function(){
+    input = $('.input-area').html();
+    var add = this.firstChild.innerHTML;
+    if(  (firstNumber === true) && (operator === false)  && (firstDecmial === false )  ){
+        input = input + add;
+        console.log('first');
+        $('.input-area').html(input);
+        firstDecmial = true;
+    }
+    if( secondNumber === true  && secondDecmial === false ){
+        input = input + add;
+        console.log('second');
+        $('.input-area').html(input);
+        secondDecmial = true;
+    }
+});
 
 $('.btn-operator-submit').click(function(){
-    doMath();
-});
+    var operator = findOperator();
+    var numbers = input.split(operator);
+    choseMathEquations(operator, numbers[0], numbers[1]);
+    decmialCheck();
+  });
 
 
 $('.btn-operator').click(function(){
@@ -72,8 +93,10 @@ function checkOperator(operatorToAdd){
     if(operatorToAdd === 'C'){
         input = '';
         firstNumber = false;
+        firstDecmial = false;
         operator = false;
         secondNumber = false;
+        secondDecmial = false;
         return input;
     }
     if(firstNumber && !operator){
@@ -100,24 +123,91 @@ function operatorReplace(operatorToAdd){
 }
 
 
-function doMath(){
+function findOperator(){
     var  string = input;
     for(var operatorIrritator = 0; operatorIrritator < operatorList.length; operatorIrritator++){
+
         for( var stringIrritator = 0; stringIrritator < string.length; stringIrritator++  ){
-            return operatorList[operatorIrritator];
+            if(operatorList[operatorIrritator] === string[stringIrritator] ){
+                return operatorList[operatorIrritator];
+            }
+
         }
     }
 }
+
+
 // Might be repaced with an object with methods vs a switch
-function choseMathEquations(mathOperator){
+function choseMathEquations(mathOperator, firstNumber, secondNumber){
     switch(mathOperator){
         case '+':
-            doSum();
+            doSum(firstNumber,secondNumber);
             break;
-
+        case '-':
+            doSubtract(firstNumber, secondNumber);
+            break;
+        case 'x':
+            doProduct(firstNumber, secondNumber);
+            break;
+        case '÷':
+            doDivision(firstNumber,secondNumber);
+            break;
     }
 }
 
-function formatEquation(){
+function doSum(firstNumber, secondNumber){
+    var firstInt = parseFloat(firstNumber);
+    var secondInt = parseFloat(secondNumber);
+    var sum = firstInt + secondInt;
+    operator = false;
+    secondNumber = false;
+    firstNumber = true;
+    $('.input-area').html(sum);
 
+}
+
+function doSubtract(firstNumber, secondNumber){
+    var firstInt = parseFloat(firstNumber);
+    var secondInt = parseFloat(secondNumber);
+    var difference = firstInt - secondInt;
+    operator = false;
+    secondNumber = false;
+    firstNumber = true;
+    $('.input-area').html(difference);
+
+}
+
+
+function doProduct(firstNumber, secondNumber){
+    var firstInt = parseFloat(firstNumber);
+    var secondInt = parseFloat(secondNumber);
+    var product = firstInt * secondInt;
+    operator = false;
+    secondNumber = false;
+    firstNumber = true;
+    $('.input-area').html(product);
+
+}
+
+
+function doDivision(firstNumber, secondNumber){
+    var firstInt = parseFloat(firstNumber);
+    var secondInt = parseFloat(secondNumber);
+    var quotient = firstInt / secondInt;
+    operator = false;
+    secondNumber = false;
+    firstNumber = true;
+    $('.input-area').html(quotient);
+
+}
+
+
+function decmialCheck(){
+    if(input.indexOf('.') >= 0 ){
+        firstDecmial = true;
+        secondDecmial = false;
+        return true;
+    }else{
+        return false;
+    }
 }
