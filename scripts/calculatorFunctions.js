@@ -66,9 +66,9 @@ function doDivision(firstNumber, secondNumber){
 
 
 function decmialCheck(){
+    input = $('.input-area').html();
     if(input.indexOf('.') >= 0 ){
         firstDecmial = true;
-        secondDecmial = false;
         return true;
     }else{
         return false;

@@ -32,18 +32,19 @@ $('.btn-number-decmial').click(function(){
         $('.input-area').html(input);
         firstDecmial = true;
     }
-    if( secondNumber === true  && secondDecmial === false ){
+    if( (secondNumber === true)  && (secondDecmial === false) && (operator === true) ){
         input = input + add;
-        $('.input-area').html(input);
         secondDecmial = true;
-    }
+        $('.input-area').html(input);
+        }
 });
 
 $('.btn-operator-submit').click(function(){
     var operator = findOperator();
     var numbers = input.split(operator);
     choseMathEquations(operator, numbers[0], numbers[1]);
-    decmialCheck();
+    secondNumber = false;
+    secondDecmial = false;
   });
 
 
