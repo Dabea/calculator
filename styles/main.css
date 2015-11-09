@@ -82,6 +82,21 @@
   background-color: #6f6f6f;
 }
 
+.btn-converter{
+    width: 75px;
+    background-color: #27ae60;
+}
+
+.btn-base{
+    width: 75px;
+    background-color: #2980b9;
+}
+
+.btn-base-active{
+    width: 75px;
+    background-color: #c0392b;
+}
+
 .btn-number-decmial{
     background-color: #7f7f7f;
 }

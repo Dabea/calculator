@@ -11,7 +11,17 @@ var operator = false;
 var secondNumber = false;
 var secondDecmial = false;
 var operatorList = ['x', '*', '+', '-', '/', '÷', '%' ];
+var baseInput = 10;
 
+$('.btn-converter').click(function(){
+    var baseTo = $(this).attr("base");
+    console.log(baseTo);
+    console.log('tset');
+    var convertedNumber = convertBase(2, baseTo);
+    var test = parseInt(1100,2).toString(16);
+    console.log(test);
+    $('.input-area').html(convertedNumber);
+});
 
 $('.btn-number').click(function(){
     input = $('.input-area').html();
@@ -117,3 +127,22 @@ function findOperator(){
 }
 
 
+/*
+* Conver section
+ */
+function convertBase(inputBase, outputBase){
+    input = $('.input-area').html();
+    var inputNumber = parseFloat(input, inputBase).toString(outputBase);
+    console.log(inputNumber);
+   return inputNumber;
+}
+
+
+
+
+$('.btn-base').click(function(){
+    $('.btn-base-active').removeClass('btn-base-active');
+    $(this).addClass('btn-base-active');
+    baseInput = $(this).attr('base');
+    console.log(baseInput);
+});
